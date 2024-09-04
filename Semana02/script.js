@@ -36,16 +36,22 @@ function atualizarRelogio() {
 atualizarRelogio();
 
 function verificarPalindromo() {
+    const texto = document.getElementById("entradaTexto").value.trim(); 
+    if (texto === '') {
+        alert('Nada foi digitado. Por favor, insira uma palavra ou frase.');
+        return; 
+    }
     
-    const texto = document.getElementById("entradaTexto").value;//digitação do texto 
-    const textoLimpo = texto.replace(/\s+/g, '');//remove espaços
-    const ehPalindromo = textoLimpo === textoLimpo.split('').reverse().join('');//verificação
-
+    const textoLimpo = texto.replace(/\s+/g, '');
+    
+    const ehPalindromo = textoLimpo === textoLimpo.split('').reverse().join('');
+    
     if (ehPalindromo) {
         alert('O texto é um palíndromo!');
     } else {
         alert('O texto não é um palíndromo.');
     }
 }
+
 
 
