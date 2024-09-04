@@ -57,12 +57,23 @@ function calcularFatorial() {
 
 function verificarTipoDado() {
     let dado = prompt("Digite qualquer valor:");
-    let desejaVerificar = confirm("Deseja verificar o tipo do dado informado?");
-
-    if (desejaVerificar) {
-        let tipoDado = typeof dado;
-        document.body.innerHTML += `<p>O tipo do dado informado é: ${tipoDado}</p>`;
-    } else {
-        document.body.innerHTML += "<p>Obrigado por visitar esta página.</p>";
+    
+    let tipoDado;
+    
+    // Verifica se é um número
+    if (!isNaN(Number(dado)) && dado.trim() !== "") {
+        tipoDado = "Número";
     }
+    // Verifica se é um caractere especial
+    else if (/[^a-zA-Z0-9\s]/.test(dado)) {
+        tipoDado = "Caractere Especial";
+    }
+    // Caso seja uma string normal
+    else if (dado.trim() !== "") {
+        tipoDado = "String";
+    } else {
+        tipoDado = "Entrada Vazia";
+    }
+
+    alert(`O tipo do dado informado é: ${tipoDado}`);
 }
