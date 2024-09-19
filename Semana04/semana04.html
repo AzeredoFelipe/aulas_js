@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Cadastro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Formulário de Cadastro</h1>
+
+        <form id="cadastroForm" onsubmit="return validarFormulario()">
+            <!-- Campos fixos -->
+            <div class="form-group">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" onblur="validarCampo('nome', 'nome_erro', validarNome)">
+                <div id="nome_erro" class="error"></div>
+            </div>
+
+            <!-- Container para email e data de nascimento na mesma linha -->
+            <div class="email-data-container">
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Digite seu email" onblur="validarCampo('email', 'email_erro', validarEmail)">
+                    <div id="email_erro" class="error"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="data_nascimento">Data Nascimento:</label>
+                    <input type="date" id="data_nascimento" name="data_nascimento" onblur="validarCampo('data_nascimento', 'data_nascimento_erro', validarDataNascimento)">
+                    <div id="data_nascimento_erro" class="error"></div>
+                </div>
+            </div>  
+
+            <!-- Container para telefone e filtros -->
+            <div class="telefone-filtro-container">
+                <!-- Campos de telefone lado a lado -->
+                <div class="telefone-container">
+                    <div class="form-group">
+                        <label for="telefone_fixo">Telefone Fixo:</label>
+                        <input type="text" id="telefone_fixo" name="telefone_fixo" placeholder="(xx)xxxx-xxxx" oninput="formatarTelefone(this)" onblur="validarCampo('telefone_fixo', 'telefone_fixo_erro', validarTelefone)">
+                        <div id="telefone_fixo_erro" class="error"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="telefone_celular">Telefone Celular:</label>
+                        <input type="text" id="telefone_celular" name="telefone_celular" placeholder="(xx)xxxxx-xxxx" oninput="formatarTelefone(this)" onblur="validarCampo('telefone_celular', 'telefone_celular_erro', validarTelefone)">
+                        <div id="telefone_celular_erro" class="error"></div>
+                    </div>
+                </div>
+
+                <!-- Filtros de Tipo de Usuário ao lado dos telefones -->
+                <div class="filtro-container">
+                    <div class="radio-group">
+                        <div>
+                            <input type="radio" id="professor" name="tipo_usuario" value="Professor" onclick="alternarCampos()">
+                            <label for="professor">Professor</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="aluno" name="tipo_usuario" value="Aluno" onclick="alternarCampos()" checked>
+                            <label for="aluno">Aluno</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Campos específicos que serão mostrados conforme o tipo de usuário -->
+            <div id="campos_especificos"></div>
+
+            <div class="buttons">
+                <input type="submit" value="Enviar">
+                <input type="reset" value="Redefinir">
+            </div>
+        </form>
+    </div>
+    <div class="text-center mt-5">
+        <a href="../index.html" class="text-decoration-none text-primary">Voltar à Página Principal</a>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
