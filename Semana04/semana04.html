@@ -18,20 +18,19 @@
                 <div id="nome_erro" class="error"></div>
             </div>
 
-            <!-- Container para email e data de nascimento na mesma linha -->
+            <!-- Container para email e data de nascimento -->
             <div class="email-data-container">
                 <div class="form-group">
                     <label for="email">Email:</label>
                     <input type="email" id="email" name="email" placeholder="Digite seu email" onblur="validarCampo('email', 'email_erro', validarEmail)">
                     <div id="email_erro" class="error"></div>
                 </div>
-
-                <div class="form-group">
+                <div class="form-group data-nascimento">
                     <label for="data_nascimento">Data Nascimento:</label>
                     <input type="date" id="data_nascimento" name="data_nascimento" onblur="validarCampo('data_nascimento', 'data_nascimento_erro', validarDataNascimento)">
                     <div id="data_nascimento_erro" class="error"></div>
                 </div>
-            </div>  
+            </div>
 
             <!-- Container para telefone e filtros -->
             <div class="telefone-filtro-container">

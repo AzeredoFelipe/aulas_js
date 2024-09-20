@@ -106,13 +106,13 @@ button:hover {
 .telefone-container {
     flex: 2; /* Ajusta a largura do contêiner dos telefones */
     display: flex;
-    gap: 10px; /* Espaço entre os campos de telefone */
+    gap: 30px; /* Espaço entre os campos de telefone */
 }
 
 /* Campo de telefone fixo e celular */
 .telefone-container .form-group {
     flex: 1; /* Ajusta a largura do campo de telefone */
-    min-width: 130px; /* Define uma largura mínima para os campos de telefone */
+    min-width: 140px; /* Define uma largura mínima para os campos de telefone */
 }
 
 /* Remove margem do último item */
@@ -132,11 +132,10 @@ button:hover {
     margin: 0; /* Remove a margem para alinhamento */
 }
 
-
 .radio-group {
     display: flex;
     flex-direction: column; /* Empilha cada par de rádio e label verticalmente */
-    gap: 10px; /* Espaço entre os pares */
+    gap: 8px; /* Espaço entre os pares */
 }
 
 .radio-group div {
@@ -155,12 +154,28 @@ button:hover {
     gap: 20px; /* Espaço entre os campos */
 }
 
+/* Ajusta o campo de email */
 .email-data-container .form-group {
-    flex: 1; /* Faz com que cada campo ocupe o mesmo espaço */
+    flex: 2; /* Aumenta a largura do campo de email */
 }
 
 .email-data-container .form-group input {
-    width: 100%; /* Faz os campos ocuparem 100% do espaço disponível */
+    width: 100%; /* Faz o campo de email ocupar 100% do espaço */
 }
 
+/* Específico para o campo de data de nascimento */
+.data-nascimento {
+    flex-basis: 150px; /* Ajusta a largura do campo de data para ser menor */
+    max-width: 150px; /* Limita a largura máxima do campo de data */
+}
+
+.data-nascimento input {
+    width: 100%;
+    padding: 5px; /* Adiciona um preenchimento */
+    border: 1px solid #ccc; /* Adiciona a borda ao campo */
+    border-radius: 4px; /* Bordas levemente arredondadas */
+    box-sizing: border-box;
+    font-size: 12px; /* Tamanho da fonte adequado */
+    margin-bottom: 10px; /* Espaço abaixo do campo, se necessário */
+}
 
