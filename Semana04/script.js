@@ -1,63 +1,79 @@
 function alternarCampos() {
-    const tipoUsuario = document.querySelector('input[name="tipo_usuario"]:checked').value;
-    const camposEspecificos = document.getElementById('campos_especificos');
-    
-    // Limpa os campos específicos existentes
-    camposEspecificos.innerHTML = '';
+    var camposDiv = document.getElementById('campos_especificos');
+    camposDiv.innerHTML = "";
 
-    if (tipoUsuario === 'Aluno') {
-        // Cria e adiciona campos específicos para Aluno
-        const cursoDiv = document.createElement('div');
-        cursoDiv.className = 'form-group';
-        cursoDiv.innerHTML = `
-            <label for="curso">Curso:</label>
-            <input type="text" id="curso" name="curso" placeholder="Digite seu curso">
-            <div id="curso_erro" class="erro"></div>
-        `;
-        camposEspecificos.appendChild(cursoDiv);
+    var tipoUsuario = document.querySelector('input[name="tipo_usuario"]:checked').value;
 
-        const matriculaAlunoDiv = document.createElement('div');
-        matriculaAlunoDiv.className = 'form-group';
-        matriculaAlunoDiv.innerHTML = `
-            <label for="matricula_aluno">Matrícula:</label>
-            <input type="text" id="matricula_aluno" name="matricula_aluno" placeholder="Digite sua matrícula">
-            <div id="matricula_aluno_erro" class="erro"></div>
-        `;
-        camposEspecificos.appendChild(matriculaAlunoDiv);
+    if (tipoUsuario === "Aluno") {
+        var cursoLabel = document.createElement('label');
+        cursoLabel.setAttribute('for', 'curso');
+        cursoLabel.textContent = 'Curso:';
 
-    } else if (tipoUsuario === 'Professor') {
-        // Cria e adiciona campos específicos para Professor
-        const areaDiv = document.createElement('div');
-        areaDiv.className = 'form-group';
-        areaDiv.innerHTML = `
-            <label for="area">Área:</label>
-            <input type="text" id="area" name="area" placeholder="Digite sua área de atuação">
-            <div id="area_erro" class="erro"></div>
-        `;
-        camposEspecificos.appendChild(areaDiv);
+        var cursoInput = document.createElement('input');
+        cursoInput.setAttribute('type', 'text');
+        cursoInput.setAttribute('id', 'curso');
+        cursoInput.setAttribute('name', 'curso');
+        cursoInput.setAttribute('placeholder', 'Digite seu curso');
+        cursoInput.setAttribute('onblur', "validarCampo('curso')");
 
-        const matriculaProfessorDiv = document.createElement('div');
-        matriculaProfessorDiv.className = 'form-group';
-        matriculaProfessorDiv.innerHTML = `
-            <label for="matricula_professor">Matrícula:</label>
-            <input type="text" id="matricula_professor" name="matricula_professor" placeholder="Digite sua matrícula">
-            <div id="matricula_professor_erro" class="erro"></div>
-        `;
-        camposEspecificos.appendChild(matriculaProfessorDiv);
+        var matriculaLabel = document.createElement('label');
+        matriculaLabel.setAttribute('for', 'matricula');
+        matriculaLabel.textContent = 'Matrícula (10 dígitos):';
 
-        const lattesDiv = document.createElement('div');
-        lattesDiv.className = 'form-group';
-        lattesDiv.innerHTML = `
-            <label for="lattes">Lattes:</label>
-            <input type="url" id="lattes" name="lattes" placeholder="Digite seu currículo Lattes">
-            <div id="lattes_erro" class="erro"></div>
-        `;
-        camposEspecificos.appendChild(lattesDiv);
+        var matriculaInput = document.createElement('input');
+        matriculaInput.setAttribute('type', 'text');
+        matriculaInput.setAttribute('id', 'matricula');
+        matriculaInput.setAttribute('name', 'matricula');
+        matriculaInput.setAttribute('placeholder', 'Digite sua matrícula');
+        matriculaInput.setAttribute('onblur', "validarCampo('matricula')");
+
+        camposDiv.appendChild(cursoLabel);
+        camposDiv.appendChild(cursoInput);
+        camposDiv.appendChild(matriculaLabel);
+        camposDiv.appendChild(matriculaInput);
+    } else if (tipoUsuario === "Professor") {
+        var areaLabel = document.createElement('label');
+        areaLabel.setAttribute('for', 'area');
+        areaLabel.textContent = 'Área:';
+
+        var areaInput = document.createElement('input');
+        areaInput.setAttribute('type', 'text');
+        areaInput.setAttribute('id', 'area');
+        areaInput.setAttribute('name', 'area');
+        areaInput.setAttribute('placeholder', 'Digite sua área de atuação');
+        areaInput.setAttribute('onblur', "validarCampo('area')");
+
+        var lattesLabel = document.createElement('label');
+        lattesLabel.setAttribute('for', 'lattes');
+        lattesLabel.textContent = 'Lattes:';
+
+        var lattesInput = document.createElement('input');
+        lattesInput.setAttribute('type', 'text');
+        lattesInput.setAttribute('id', 'lattes');
+        lattesInput.setAttribute('name', 'lattes');
+        lattesInput.setAttribute('placeholder', 'Digite seu link Lattes');
+        lattesInput.setAttribute('onblur', "validarCampo('lattes')");
+
+        var matriculaLabel = document.createElement('label');
+        matriculaLabel.setAttribute('for', 'matricula');
+        matriculaLabel.textContent = 'Matrícula (5 dígitos):';
+
+        var matriculaInput = document.createElement('input');
+        matriculaInput.setAttribute('type', 'text');
+        matriculaInput.setAttribute('id', 'matricula');
+        matriculaInput.setAttribute('name', 'matricula');
+        matriculaInput.setAttribute('placeholder', 'Digite sua matrícula');
+        matriculaInput.setAttribute('onblur', "validarCampo('matricula')");
+
+        camposDiv.appendChild(areaLabel);
+        camposDiv.appendChild(areaInput);
+        camposDiv.appendChild(lattesLabel);
+        camposDiv.appendChild(lattesInput);
+        camposDiv.appendChild(matriculaLabel);
+        camposDiv.appendChild(matriculaInput);
     }
 }
 
-
-// Função para formatar telefone
 function formatarTelefone(input) {
     let valor = input.value;
     valor = valor.replace(/\D/g, '');
@@ -141,3 +157,4 @@ function validarFormulario() {
 
     return valido;
 }
+
