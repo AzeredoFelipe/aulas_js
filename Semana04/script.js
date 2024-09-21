@@ -1,3 +1,77 @@
+function Pessoa(nome, email) {
+    this.nome = nome;
+    this.email = email;
+
+    this.setNome = function(nome) {
+        this.nome = nome;
+    };
+
+    this.getNome = function() {
+        return this.nome;
+    };
+
+    this.setEmail = function(email) {
+        this.email = email;
+    };
+
+    this.getEmail = function() {
+        return this.email;
+    };
+}
+
+function Aluno(nome, email, curso, matricula) {
+    Pessoa.call(this, nome, email);
+    this.curso = curso;
+    this.matricula = matricula;
+
+    this.setCurso = function(curso) {
+        this.curso = curso;
+    };
+
+    this.getCurso = function() {
+        return this.curso;
+    };
+
+    this.setMatricula = function(matricula) {
+        this.matricula = matricula;
+    };
+
+    this.getMatricula = function() {
+        return this.matricula;
+    };
+}
+
+function Professor(nome, email, area, lattes, matricula) {
+    Pessoa.call(this, nome, email);
+    this.area = area;
+    this.lattes = lattes;
+    this.matricula = matricula;
+
+    this.setArea = function(area) {
+        this.area = area;
+    };
+
+    this.getArea = function() {
+        return this.area;
+    };
+
+    this.setLattes = function(lattes) {
+        this.lattes = lattes;
+    };
+
+    this.getLattes = function() {
+        return this.lattes;
+    };
+
+    this.setMatricula = function(matricula) {
+        this.matricula = matricula;
+    };
+
+    this.getMatricula = function() {
+        return this.matricula;
+    };
+}
+
 function alternarCampos() {
     var camposDiv = document.getElementById('campos_especificos');
     camposDiv.innerHTML = "";
@@ -17,15 +91,15 @@ function alternarCampos() {
         cursoInput.setAttribute('onblur', "validarCampo('curso')");
 
         var matriculaLabel = document.createElement('label');
-        matriculaLabel.setAttribute('for', 'matricula');
+        matriculaLabel.setAttribute('for', 'matricula_aluno');
         matriculaLabel.textContent = 'Matrícula (10 dígitos):';
 
         var matriculaInput = document.createElement('input');
         matriculaInput.setAttribute('type', 'text');
-        matriculaInput.setAttribute('id', 'matricula');
+        matriculaInput.setAttribute('id', 'matricula_aluno');
         matriculaInput.setAttribute('name', 'matricula');
         matriculaInput.setAttribute('placeholder', 'Digite sua matrícula');
-        matriculaInput.setAttribute('onblur', "validarCampo('matricula')");
+        matriculaInput.setAttribute('onblur', "validarCampo('matricula_aluno')");
 
         camposDiv.appendChild(cursoLabel);
         camposDiv.appendChild(cursoInput);
@@ -55,15 +129,15 @@ function alternarCampos() {
         lattesInput.setAttribute('onblur', "validarCampo('lattes')");
 
         var matriculaLabel = document.createElement('label');
-        matriculaLabel.setAttribute('for', 'matricula');
+        matriculaLabel.setAttribute('for', 'matricula_professor');
         matriculaLabel.textContent = 'Matrícula (5 dígitos):';
 
         var matriculaInput = document.createElement('input');
         matriculaInput.setAttribute('type', 'text');
-        matriculaInput.setAttribute('id', 'matricula');
+        matriculaInput.setAttribute('id', 'matricula_professor');
         matriculaInput.setAttribute('name', 'matricula');
         matriculaInput.setAttribute('placeholder', 'Digite sua matrícula');
-        matriculaInput.setAttribute('onblur', "validarCampo('matricula')");
+        matriculaInput.setAttribute('onblur', "validarCampo('matricula_professor')");
 
         camposDiv.appendChild(areaLabel);
         camposDiv.appendChild(areaInput);
@@ -119,12 +193,14 @@ function validarFormulario() {
             document.getElementById('curso_erro').textContent = '';
         }
 
-        if (matriculaAluno.length < 5) {
+        if (matriculaAluno.length < 10) {
             document.getElementById('matricula_aluno_erro').textContent = 'Matrícula inválida.';
             valido = false;
         } else {
             document.getElementById('matricula_aluno_erro').textContent = '';
         }
+
+        let aluno = new Aluno(nome, email, curso, matriculaAluno);
     } else if (tipoUsuario === 'Professor') {
         const area = document.getElementById('area').value;
         const matriculaProfessor = document.getElementById('matricula_professor').value;
@@ -150,8 +226,9 @@ function validarFormulario() {
         } else {
             document.getElementById('lattes_erro').textContent = '';
         }
+
+        let professor = new Professor(nome, email, area, lattes, matriculaProfessor);
     }
 
     return valido;
 }
-
