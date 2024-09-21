@@ -4,74 +4,81 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulário de Cadastro:</title>
+    <!-- Incluindo Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Formulário de Cadastro</h1>
+
+    <!-- Container principal com margem superior -->
+    <div class="container mt-5">
+        <h1 class="text-center">Formulário de Cadastro</h1>
 
         <form id="cadastroForm" onsubmit="return validarFormulario()">
             <!-- Campos fixos -->
             <div class="form-group">
                 <label for="nome">Nome:</label>
-                <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" onblur="validarCampo('nome', 'nome_erro', validarNome)">
+                <input type="text" id="nome" name="nome" class="form-control" placeholder="Digite seu nome completo" onblur="validarCampo('nome', 'nome_erro', validarNome)">
                 <div id="nome_erro" class="error"></div>
             </div>
 
             <!-- Container para email e data de nascimento -->
-            <div class="email-data-container">
-                <div class="form-group">
+            <div class="row">
+                <div class="form-group col-md-6">
                     <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" placeholder="Digite seu email" onblur="validarCampo('email', 'email_erro', validarEmail)">
+                    <input type="email" id="email" name="email" class="form-control" placeholder="Digite seu email" onblur="validarCampo('email', 'email_erro', validarEmail)">
                     <div id="email_erro" class="error"></div>
                 </div>
-                <div class="form-group data-nascimento">
+                <div class="form-group col-md-6">
                     <label for="data_nascimento">Data Nascimento:</label>
-                    <input type="date" id="data_nascimento" name="data_nascimento" onblur="validarCampo('data_nascimento', 'data_nascimento_erro', validarDataNascimento)">
+                    <input type="date" id="data_nascimento" name="data_nascimento" class="form-control" onblur="validarCampo('data_nascimento', 'data_nascimento_erro', validarDataNascimento)">
                     <div id="data_nascimento_erro" class="error"></div>
                 </div>
             </div>
 
             <!-- Container para telefone e filtros -->
-            <div class="telefone-filtro-container">
+            <div class="row mt-3">
                 <!-- Campos de telefone lado a lado -->
-                <div class="telefone-container">
+                <div class="col-md-6">
                     <div class="form-group">
                         <label for="telefone_fixo">Telefone Fixo:</label>
-                        <input type="text" id="telefone_fixo" name="telefone_fixo" placeholder="(xx)xxxx-xxxx" oninput="formatarTelefone(this)" onblur="validarCampo('telefone_fixo', 'telefone_fixo_erro', validarTelefone)">
+                        <input type="text" id="telefone_fixo" name="telefone_fixo" class="form-control" placeholder="(xx)xxxx-xxxx" oninput="formatarTelefone(this)" onblur="validarCampo('telefone_fixo', 'telefone_fixo_erro', validarTelefone)">
                         <div id="telefone_fixo_erro" class="error"></div>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group mt-3">
                         <label for="telefone_celular">Telefone Celular:</label>
-                        <input type="text" id="telefone_celular" name="telefone_celular" placeholder="(xx)xxxxx-xxxx" oninput="formatarTelefone(this)" onblur="validarCampo('telefone_celular', 'telefone_celular_erro', validarTelefone)">
+                        <input type="text" id="telefone_celular" name="telefone_celular" class="form-control" placeholder="(xx)xxxxx-xxxx" oninput="formatarTelefone(this)" onblur="validarCampo('telefone_celular', 'telefone_celular_erro', validarTelefone)">
                         <div id="telefone_celular_erro" class="error"></div>
                     </div>
                 </div>
 
                 <!-- Filtros de Tipo de Usuário ao lado dos telefones -->
-                <div class="filtro-container">
-                    <div class="radio-group">
-                        <div>
-                            <input type="radio" id="professor" name="tipo_usuario" value="Professor" onclick="alternarCampos()">
-                            <label for="professor">Professor</label>
-                        </div>
-                        <div>
-                            <input type="radio" id="aluno" name="tipo_usuario" value="Aluno" onclick="alternarCampos()">
-                            <label for="aluno">Aluno</label>
-                        </div>
+                <div class="col-md-6">
+                    <p>Tipo de Usuário:</p>
+                    <div class="form-check">
+                        <input type="radio" id="professor" name="tipo_usuario" value="Professor" class="form-check-input" onclick="alternarCampos()">
+                        <label for="professor" class="form-check-label">Professor</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" id="aluno" name="tipo_usuario" value="Aluno" class="form-check-input" onclick="alternarCampos()">
+                        <label for="aluno" class="form-check-label">Aluno</label>
                     </div>
                 </div>
             </div>
 
             <!-- Campos específicos que serão mostrados conforme o tipo de usuário -->
-            <div id="campos_especificos"></div>
-            <div class="buttons">
-                <input type="submit" value="Enviar">
-                <input type="reset" value="Redefinir">
+            <div id="campos_especificos" class="mt-4"></div>
+
+            <!-- Botões -->
+            <div class="text-center mt-3">
+                <input type="submit" class="btn btn-primary" value="Enviar">
+                <input type="reset" class="btn btn-secondary" value="Redefinir">
             </div>
         </form>
     </div>
+
+    <!-- Link de retorno à página principal -->
     <div class="text-center mt-5">
         <a href="../index.html" class="text-decoration-none text-primary">Voltar à Página Principal</a>
     </div>
