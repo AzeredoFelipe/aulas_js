@@ -87,11 +87,9 @@ function formatarTelefone(input) {
     input.value = valor;
 }
 
-// Função de validação de formulário
 function validarFormulario() {
     let valido = true;
 
-    // Validar campos fixos
     const nome = document.getElementById('nome').value;
     const email = document.getElementById('email').value;
     
@@ -109,7 +107,6 @@ function validarFormulario() {
         document.getElementById('email_erro').textContent = '';
     }
 
-    // Validar campos específicos conforme tipo de usuário
     const tipoUsuario = document.querySelector('input[name="tipo_usuario"]:checked').value;
     if (tipoUsuario === 'Aluno') {
         const curso = document.getElementById('curso').value;
