@@ -40,22 +40,24 @@
             <div class="row mt-3">
                 <!-- Campos de telefone lado a lado -->
                 <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="telefone_fixo">Telefone Fixo:</label>
-                        <input type="text" id="telefone_fixo" name="telefone_fixo" class="form-control" placeholder="(xx)xxxx-xxxx" oninput="formatarTelefone(this)" onblur="validarCampo('telefone_fixo', 'telefone_fixo_erro', validarTelefone)">
-                        <div id="telefone_fixo_erro" class="error"></div>
-                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="telefone_fixo">Telefone Fixo:</label>
+                            <input type="text" id="telefone_fixo" name="telefone_fixo" class="form-control" placeholder="(xx)xxxx-xxxx" oninput="formatarTelefone(this)" onblur="validarCampo('telefone_fixo', 'telefone_fixo_erro', validarTelefone)">
+                            <div id="telefone_fixo_erro" class="error"></div>
+                        </div>
 
-                    <div class="form-group mt-3">
-                        <label for="telefone_celular">Telefone Celular:</label>
-                        <input type="text" id="telefone_celular" name="telefone_celular" class="form-control" placeholder="(xx)xxxxx-xxxx" oninput="formatarTelefone(this)" onblur="validarCampo('telefone_celular', 'telefone_celular_erro', validarTelefone)">
-                        <div id="telefone_celular_erro" class="error"></div>
+                        <div class="form-group col-md-6">
+                            <label for="telefone_celular">Telefone Celular:</label>
+                            <input type="text" id="telefone_celular" name="telefone_celular" class="form-control" placeholder="(xx)xxxxx-xxxx" oninput="formatarTelefone(this)" onblur="validarCampo('telefone_celular', 'telefone_celular_erro', validarTelefone)">
+                            <div id="telefone_celular_erro" class="error"></div>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Filtros de Tipo de Usuário ao lado dos telefones -->
                 <div class="col-md-6">
-                    <p>Tipo de Usuário:</p>
+                    
                     <div class="form-check">
                         <input type="radio" id="professor" name="tipo_usuario" value="Professor" class="form-check-input" onclick="alternarCampos()">
                         <label for="professor" class="form-check-label">Professor</label>
@@ -71,7 +73,7 @@
             <div id="campos_especificos" class="mt-4"></div>
 
             <!-- Botões -->
-            <div class="text-center mt-3">
+            <div class="text-center mt-4">
                 <input type="submit" class="btn btn-primary" value="Enviar">
                 <input type="reset" class="btn btn-secondary" value="Redefinir">
             </div>
