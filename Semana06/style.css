@@ -1,0 +1,38 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; 
+    margin: 0;
+    background-color: #f0f8ff; 
+    font-family: Arial, sans-serif;
+}
+
+h1.letreiro {
+    font-size: 2.5rem; 
+    margin-bottom: 30px; 
+}
+
+.link-container {
+    margin-top: 60px; 
+
+.link {
+    text-decoration: none; 
+    color: #007bff; 
+    font-size: 1.2rem; 
+}
+
+.link:hover {
+    text-decoration: underline; 
+
+
+@media (max-width: 600px) {
+    h1.letreiro {
+        font-size: 2rem; 
+    }
+
+    .link {
+        font-size: 1rem; 
+    }
+}

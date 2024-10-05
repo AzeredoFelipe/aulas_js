@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Letreiro Fatec</title>
+    <link rel="stylesheet" href="style.css"> 
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        function Letreiro() {
+            const mensagem = "Venha estudar na Fatec";
+            const [texto, setTexto] = React.useState('');
+            const [index, setIndex] = React.useState(0);
+
+            React.useEffect(() => {
+                const interval = setInterval(() => {
+                    if (index < mensagem.length) {
+                        setTexto((prevTexto) => prevTexto + mensagem[index]);
+                        setIndex((prevIndex) => prevIndex + 1);
+                    } else {
+                        clearInterval(interval);
+                    }
+                }, 200);
+
+                return () => clearInterval(interval);
+            }, [index]);
+
+            return <h1 className="letreiro">{texto}</h1>;
+        }
+
+        function App() {
+            return (
+                <Letreiro />
+            );
+        }
+
+        const container = document.getElementById('root');
+        const root = ReactDOM.createRoot(container);
+        root.render(<App />);
+    </script>
+
+    <div class="link-container">
+        <a href="../index.html" class="link">Voltar à Página Principal</a>
+    </div>
+</body>
+</html>
